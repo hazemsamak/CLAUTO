@@ -1,0 +1,29 @@
+<message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header>
+    <securityContext>
+      <webExID>USERNAME</webExID>
+      <password>PASSWORD</password>
+      <siteName>ORGANIZATION</siteName>
+    </securityContext>
+  </header>
+    <body>
+        <bodyContent
+            xsi:type="java:com.webex.service.binding.meeting.CreateMeeting">
+            <accessControl>
+                <meetingPassword>12345</meetingPassword>
+            </accessControl>
+            <metaData>
+                <confName>Sample Meeting</confName>
+            </metaData>
+            <enableOptions>
+                <chat>true</chat>
+                <audioVideo>true</audioVideo>
+                <autoRecord>true</autoRecord>
+            </enableOptions>
+            <schedule>
+                <startDate>10/28/2019 16:00:00</startDate>
+                <duration>30</duration>
+            </schedule>
+        </bodyContent>
+    </body>
+</message>

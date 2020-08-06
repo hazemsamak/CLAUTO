@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.cisco.com/AXL/API/12.0">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ns:getPhone>
+            <name>DEVICE_NAME_HERE</name>
+        </ns:getPhone>
+    </soapenv:Body>
+</soapenv:Envelope>

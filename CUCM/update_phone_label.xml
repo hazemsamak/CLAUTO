@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.cisco.com/AXL/API/12.0">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ns:updatePhone>
+            <name>DEVICE_NAME_HERE</name>
+            <lines>
+                <line>
+                    <index>BUTTON_NUMBER_HERE</index>
+                    <label>LINE_LABEL_HERE</label>
+                    <dirn>
+                    	<pattern>LINE_EXTENSION_HERE</pattern>
+                    	<routePartitionName>LINE_PARTITION_HERE</routePartitionName>
+                    </dirn>
+                </line>
+            </lines>
+        </ns:updatePhone>
+    </soapenv:Body>
+</soapenv:Envelope>

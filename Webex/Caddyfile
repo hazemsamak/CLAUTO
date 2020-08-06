@@ -1,0 +1,10 @@
+localhost:9000 {
+    templates
+    browse
+}
+
+localhost:9443 {
+    tls self_signed
+    templates
+    browse
+}

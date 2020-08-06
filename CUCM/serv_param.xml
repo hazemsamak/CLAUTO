@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.cisco.com/AXL/API/12.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:listServiceParameter>
+         <searchCriteria>
+            <processNodeName>EnterpriseWideData</processNodeName>
+         </searchCriteria>
+         <returnedTags>
+            <name/>
+            <service/>
+            <value/>
+         </returnedTags>
+      </ns:listServiceParameter>
+   </soapenv:Body>
+</soapenv:Envelope>

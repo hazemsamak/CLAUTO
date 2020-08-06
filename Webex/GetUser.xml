@@ -1,0 +1,14 @@
+<message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header>
+    <securityContext>
+      <webExID>USERNAME</webExID>
+      <password>PASSWORD</password>
+      <siteName>ORGANIZATION</siteName>
+    </securityContext>
+  </header>
+  <body>
+    <bodyContent xsi:type="java:com.webex.service.binding.user.GetUser">
+    	<webExId>USERNAME</webExId>
+    </bodyContent>
+  </body>
+</message>

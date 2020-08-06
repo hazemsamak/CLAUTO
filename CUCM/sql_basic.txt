@@ -1,0 +1,4 @@
+select * from device where name="DEVICE_NAME_HERE"
+select tkmodel from device where name="DEVICE_NAME_HERE"
+select * from typemodel
+select device.name as device, typemodel.name as model from device inner join typemodel on device.tkmodel=typemodel.enum where device.name="DEVICE_NAME_HERE"
