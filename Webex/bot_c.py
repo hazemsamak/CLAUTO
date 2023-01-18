@@ -1,8 +1,15 @@
+import json
+import os
+from urllib import response
+
 import requests
 from webexteamsbot import TeamsBot
 from webexteamsbot.models import Response
-import json
-import os
+from webexteamssdk import WebexTeamsAPI
+from webexteamssdk.models.cards.actions import Submit
+from webexteamssdk.models.cards.card import AdaptiveCard
+from webexteamssdk.models.cards.components import TextBlock
+from webexteamssdk.models.cards.inputs import Number, Text
 
 # Note: Formatting in Webex Teams uses **text** for bold and *text* for italic
 
@@ -93,6 +100,34 @@ def greeting(input):
     response.markdown += "You can get a list of commands by typing **/help**."
     return response
 
+def card(input):
+    response = Response()
+    response.text = "Card"
+    greeting = TextBlock("Hey hello there! I am a adaptive card")
+    first_name = Text('first_name', placeholder="First Name")
+    age = Number('age', placeholder="Age")
+
+    submit = Submit(title="Send me!")
+
+    card = AdaptiveCard(body=[greeting, first_name, age], actions=[submit])
+    bot.teams.messages.create(text="fallback", roomId=input.roomId, attachments=[card])   
+
+    return response
+
+def get_card(api,input):
+    print(f"input {input}")
+    messageId = input['data']['messageId']
+    
+    action = api.attachment_actions.get(input['data']['id'])
+
+    first_name = action.inputs['first_name']
+    age = action.inputs['age']
+    api.messages.delete(messageId)
+    response = Response()
+    response.text = f"First Name: {first_name} , Age:{age}"
+
+    return response
+
 if __name__ == "__main__":
 
     # Set Webex Teams bot data fromn json file
@@ -117,7 +152,13 @@ if __name__ == "__main__":
     # Create bot commands
     bot.add_command("/planets", "List the planets.", planets)
     bot.add_command("/ping", "Send a ping, get a pong.", ping)
+    bot.add_command("/card", "Send a card", card)
+    bot.add_command("attachmentActions", "Process Card Options", get_card)
     bot.set_greeting(greeting)
-
+    
+    bot.setup_webhook(bot.teams_bot_name, bot.teams_bot_url,
+            "attachmentActions", bot.webhook_event,
+            bot.webhook_resource_event)
+    
     # Start bot using ngrok
-    bot.run(host="0.0.0.0", port=5000)
+    bot.run(host="0.0.0.0", port=7001)

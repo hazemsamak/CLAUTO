@@ -1,8 +1,9 @@
+import json
+import os
+
 import requests
 from webexteamsbot import TeamsBot
 from webexteamsbot.models import Response
-import json
-import os
 
 # Note: Formatting in Webex Teams uses **text** for bold and *text* for italic
 
@@ -46,4 +47,4 @@ if __name__ == "__main__":
     bot.set_greeting(greeting)
 
     # Start bot using ngrok
-    bot.run(host="0.0.0.0", port=5000)
+    bot.run(host="0.0.0.0", port=7001)

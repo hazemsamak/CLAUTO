@@ -1,8 +1,9 @@
 import requests
+from texttable import Texttable as TT
 from urllib3 import disable_warnings
 from urllib3.exceptions import InsecureRequestWarning
-from webexteamssdk import WebexTeamsAPI, ApiError
-from texttable import Texttable as TT
+from webexteamssdk import ApiError, WebexTeamsAPI
+
 
 # Function to print data in table
 def table(header, data):
@@ -17,6 +18,7 @@ def table(header, data):
     table.set_cols_dtype(dtype)
     table.add_rows(report)
     return table.draw()
+
 
 if __name__ == "__main__":
 
